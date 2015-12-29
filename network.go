@@ -12,20 +12,12 @@ func getNetwork() string {
 
 	var result []string
 	for _,dev := range netDevs {
-		var tmp, err = ioutil.ReadFile(fmt.Sprintf("/sys/class/net/%v/carrier", dev))
+		var tmp, err = ioutil.ReadFile(fmt.Sprintf("/sys/class/net/%v/operstate", dev))
 
-		s := stripLast(string(tmp))
-		
 		value := "ERR"
 		if (err == nil) {
-			switch s {
-			case "1":
-				value = "up"
-				break;
-			case "0":
-				value = "down"
-				break;
-			}
+			s := stripLast(string(tmp))
+			value = s
 		}
 
 		r := fmt.Sprintf("%v(%v)", dev, value)

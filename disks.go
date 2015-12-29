@@ -7,7 +7,7 @@ import (
 )
 
 var disks = map[string]string {
-	"/dev/sda2": "/",
+	"/dev/sda2": "root",
 }
 
 func getDisks() string {

@@ -4,7 +4,6 @@ import (
 	"os/exec"
 	"strings"
 	"time"
-	"fmt"
 )
 
 func setRoot(text string) {
@@ -15,6 +14,7 @@ func tick() {
 	var result []string
 	result = append(result, getBattery())
 	result = append(result, getMemory())
+	result = append(result, getDisks())
 	result = append(result, getNetwork())
 	result = append(result, getVolume())
 	result = append(result, getCpu())
